@@ -1,0 +1,22 @@
+# Local documents and research/provenance metadata are not published.
+/docs/
+/Readme.txt
+/assets/denso/*.json
+/forms/
+/assets/scss/
+
+# Original high-resolution plant files are not used by the website.
+/assets/denso/denso-plant-bekasi.jpg
+/assets/denso/denso-plant-fajar.jpg
+
+# Local configuration, backups, and generated work files.
+.env
+.env.*
+*.docx
+*.pdf
+*.zip
+*.bak
+~$*
+Thumbs.db
+.DS_Store
+*.map
