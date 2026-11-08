@@ -1,0 +1,90 @@
+/* Scoped refinements; the incumbent template, palette and JavaScript remain intact. */
+
+/* All six product categories use one component and one equal-track layout. */
+.services .product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1.5rem;
+}
+
+.services .product-grid .service-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.services .product-grid .card-body {
+  flex: 1;
+}
+
+.services .product-grid .card-link {
+  margin-top: auto;
+}
+
+@media (max-width: 991.98px) {
+  .services .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .services .product-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Article targets need their own offset; the template only offsets sections. */
+.privacy .policy-content .policy-section[id] {
+  scroll-margin-top: 100px;
+}
+
+.privacy .policy-nav .nav-link:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Native fragment state supplies accurate selection feedback without new JS. */
+.privacy:not(:has(.policy-section:target)) .policy-nav a[href="#overview"],
+.privacy:has(#overview:target) .policy-nav a[href="#overview"],
+.privacy:has(#data-collection:target) .policy-nav a[href="#data-collection"],
+.privacy:has(#usage:target) .policy-nav a[href="#usage"],
+.privacy:has(#sharing:target) .policy-nav a[href="#sharing"],
+.privacy:has(#security:target) .policy-nav a[href="#security"],
+.privacy:has(#rights:target) .policy-nav a[href="#rights"],
+.privacy:has(#updates:target) .policy-nav a[href="#updates"] {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: var(--accent-color);
+}
+
+.privacy:not(:has(.policy-section:target)) .policy-nav a[href="#overview"] .nav-number,
+.privacy:has(#overview:target) .policy-nav a[href="#overview"] .nav-number,
+.privacy:has(#data-collection:target) .policy-nav a[href="#data-collection"] .nav-number,
+.privacy:has(#usage:target) .policy-nav a[href="#usage"] .nav-number,
+.privacy:has(#sharing:target) .policy-nav a[href="#sharing"] .nav-number,
+.privacy:has(#security:target) .policy-nav a[href="#security"] .nav-number,
+.privacy:has(#rights:target) .policy-nav a[href="#rights"] .nav-number,
+.privacy:has(#updates:target) .policy-nav a[href="#updates"] .nav-number {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+/* Reading pages reuse the established type and neutral surfaces. */
+.content-page-section + .content-page-section {
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.content-page-section .reading-copy {
+  max-width: 75ch;
+}
+
+.content-page-section time {
+  display: block;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  margin-bottom: 1rem;
+}
+
+.content-page-section .section-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
